@@ -1,7 +1,6 @@
 package com.entjava.furryfriends.controller;
 
 import com.entjava.furryfriends.model.Bird;
-import com.entjava.furryfriends.model.Cat;
 import com.entjava.furryfriends.service.BirdService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
