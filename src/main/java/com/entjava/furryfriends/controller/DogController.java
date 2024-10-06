@@ -25,6 +25,24 @@ public class DogController {
         return dogService.saveDog(dog);
     }
 
+    @PutMapping("/{id}")
+    public Dog updateDog(@PathVariable Long id, @RequestBody Dog updatedDog) {
+        Dog existingDog = dogService.findAllDogs().stream()
+                .filter(dog -> dog.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+
+        if (existingDog != null) {
+            existingDog.setName(updatedDog.getName());
+            existingDog.setBreed(updatedDog.getBreed());
+            existingDog.setAge(updatedDog.getAge());
+            return dogService.saveDog(existingDog);
+        }
+
+        return null;
+
+    }
+
     @DeleteMapping("/{id}")
     public void deleteDog(@PathVariable Long id) {
         dogService.deleteDog(id);

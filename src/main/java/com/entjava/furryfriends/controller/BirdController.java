@@ -24,6 +24,9 @@ public class BirdController {
         return birdService.saveBird(bird);
     }
 
+    @PutMapping("/birds")
+    public Bird updateBird(@RequestBody Bird bird) {return birdService.updateBird( bird);}
+
     @DeleteMapping("/{id}")
     public void deleteBird(@PathVariable Long id) {
         birdService.deleteBird(id);

@@ -19,6 +19,8 @@ public class BirdService {
         return birdRepository.save(bird);
     }
 
+    public Bird updateBird(Bird bird) { birdRepository.save(bird); return bird; }
+
     public void deleteBird(Long id) {
         birdRepository.deleteById(id);
     }
