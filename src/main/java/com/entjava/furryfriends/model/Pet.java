@@ -6,7 +6,8 @@ import lombok.*;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)  // Or SINGLE_TABLE / TABLE_PER_CLASS depending on your strategy
 @Data  // Lombok to generate getters, setters, toString, etc.
-public abstract class Pet {
+public abstract class Pet
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

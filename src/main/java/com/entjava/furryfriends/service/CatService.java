@@ -11,15 +11,18 @@ public class CatService {
     @Autowired
     private CatRepository catRepository;
 
-    public List<Cat> findAllCats() {
+    public List<Cat> findAllCats()
+    {
         return catRepository.findAll();
     }
 
-    public Cat saveCat(Cat cat) {
+    public Cat saveCat(Cat cat)
+    {
         return catRepository.save(cat);
     }
 
-    public void deleteCat(Long id) {
+    public void deleteCat(Long id)
+    {
         catRepository.deleteById(id);
     }
 }

@@ -7,26 +7,31 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/dogs")
-public class DogController {
+public class DogController
+{
 
     private final DogService dogService;
 
-    public DogController(DogService dogService) {
+    public DogController(DogService dogService)
+    {
         this.dogService = dogService;
     }
 
     @GetMapping
-    public List<Dog> getAllDogs() {
+    public List<Dog> getAllDogs()
+    {
         return dogService.findAllDogs();
     }
 
     @PostMapping
-    public Dog createDog(@RequestBody Dog dog) {
+    public Dog createDog(@RequestBody Dog dog)
+    {
         return dogService.saveDog(dog);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteDog(@PathVariable Long id) {
+    public void deleteDog(@PathVariable Long id)
+    {
         dogService.deleteDog(id);
     }
 }

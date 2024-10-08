@@ -11,15 +11,18 @@ public class DogService {
     @Autowired
     private DogRepository dogRepository;
 
-    public List<Dog> findAllDogs() {
+    public List<Dog> findAllDogs()
+    {
         return dogRepository.findAll();
     }
 
-    public Dog saveDog(Dog dog) {
+    public Dog saveDog(Dog dog)
+    {
         return dogRepository.save(dog);
     }
 
-    public void deleteDog(Long id) {
+    public void deleteDog(Long id)
+    {
         dogRepository.deleteById(id);
     }
 }

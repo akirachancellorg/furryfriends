@@ -12,19 +12,23 @@ public class PetService {
     @Autowired
     private PetRepository petRepository;
 
-    public List<Pet> findAllPets() {
+    public List<Pet> findAllPets()
+    {
         return petRepository.findAll();
     }
 
-    public Optional<Pet> findPetById(Long id) {
+    public Optional<Pet> findPetById(Long id)
+    {
         return petRepository.findById(id);
     }
 
-    public Pet savePet(Pet pet) {
+    public Pet savePet(Pet pet)
+    {
         return petRepository.save(pet);
     }
 
-    public void deletePet(Long id) {
+    public void deletePet(Long id)
+    {
         petRepository.deleteById(id);
     }
 }

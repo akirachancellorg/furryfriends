@@ -11,12 +11,14 @@ public class PetController {
 
     private final PetService petService;
 
-    public PetController(PetService petService) {
+    public PetController(PetService petService)
+    {
         this.petService = petService;
     }
 
     @GetMapping
-    public List<Pet> getAllPets() {
+    public List<Pet> getAllPets()
+    {
         return petService.findAllPets();
     }
 
@@ -26,12 +28,14 @@ public class PetController {
     }
 
     @PostMapping
-    public Pet createPet(@RequestBody Pet pet) {
+    public Pet createPet(@RequestBody Pet pet)
+    {
         return petService.savePet(pet);
     }
 
     @DeleteMapping("/{id}")
-    public void deletePet(@PathVariable Long id) {
+    public void deletePet(@PathVariable Long id)
+    {
         petService.deletePet(id);
     }
 }

@@ -5,9 +5,11 @@ import lombok.*;
 
 @Entity
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class Dog extends Pet
+@EqualsAndHashCode(callSuper=true)
+public class Ferret extends Pet
 {
-    private String breed;
+
+    private String size;
     private boolean trained;
+
 }
