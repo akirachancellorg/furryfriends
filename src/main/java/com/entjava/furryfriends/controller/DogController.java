@@ -29,5 +29,10 @@ public class DogController {
     public void deleteDog(@PathVariable Long id) {
         dogService.deleteDog(id);
     }
+
+    @PatchMapping("/{id}")
+    public Dog updateDog(@PathVariable Long id, @RequestBody Dog dog) {
+        return dogService.updateDog(id, dog);
+    }
 }
 

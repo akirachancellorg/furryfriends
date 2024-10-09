@@ -29,5 +29,10 @@ public class CatController {
     public void deleteCat(@PathVariable Long id) {
         catService.deleteCat(id);
     }
+
+    @PatchMapping("/{id}")
+    public Cat updateCat(@PathVariable Long id, @RequestBody Cat cat) {
+        return catService.updateCat(id, cat);
+    }
 }
 

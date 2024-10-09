@@ -6,9 +6,9 @@ import lombok.*;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Cat extends Pet {
+public class Hamster extends Pet {
     private String color;
-    private boolean indoor;
+    private boolean isCute;
 
     public void setColor(String color) {
         this.color = color;
@@ -18,11 +18,12 @@ public class Cat extends Pet {
         return color;
     }
 
-    public void setIndoor(boolean indoor) {
-        this.indoor = indoor;
+    public void setIsCute(boolean isCute) {
+        this.isCute = isCute;
     }
 
-    public boolean getIndoor() {
-        return indoor;
+    public boolean getIsCute() {
+        return isCute;
     }
+    
 }

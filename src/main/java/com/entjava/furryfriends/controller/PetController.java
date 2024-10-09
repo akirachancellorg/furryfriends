@@ -34,5 +34,10 @@ public class PetController {
     public void deletePet(@PathVariable Long id) {
         petService.deletePet(id);
     }
+
+    @PatchMapping("/{id}")
+    public Pet updatePet(@PathVariable Long id, @RequestBody Pet pet) {
+        return petService.updatePet(id, pet);
+    }
 }
 
