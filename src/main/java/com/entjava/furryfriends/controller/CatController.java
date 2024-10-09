@@ -29,5 +29,23 @@ public class CatController {
     public void deleteCat(@PathVariable Long id) {
         catService.deleteCat(id);
     }
+
+    @PutMapping("/{id}")
+    public Cat updateCat(@PathVariable Long id, @RequestBody Cat updatedCat) {
+        Cat existingCat = catService.findAllCats().stream().
+                filter(cat -> cat.getId().equals(id)).
+                findFirst().
+                orElse(null);
+
+        if (existingCat != null) {
+            existingCat.setName(updatedCat.getName());
+            existingCat.setAge(updatedCat.getAge());
+            existingCat.setColor(updatedCat.getColor());
+            existingCat.setIndoor(updatedCat.isIndoor());
+            return catService.saveCat(existingCat);
+        }
+
+        return null;
+    }
 }
 

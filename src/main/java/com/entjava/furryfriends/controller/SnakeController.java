@@ -22,4 +22,22 @@ public class SnakeController {
     @DeleteMapping("/{id}")
     public void deleteSnake(@PathVariable Long id) { snakeService.deleteSnake(id);}
 
+    @PutMapping("/{id}")
+    public Snake updateSnake(@PathVariable Long id, @RequestBody Snake updatedSnake) {
+        Snake existingSnake = snakeService.findAllSnakes().stream()
+                .filter(snake -> snake.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+
+        if(existingSnake != null) {
+            existingSnake.setName(updatedSnake.getName());
+            existingSnake.setAge(updatedSnake.getAge());
+            existingSnake.setSpecies(updatedSnake.getSpecies());
+            existingSnake.setVenomous(updatedSnake.isVenomous());
+            return snakeService.saveSnake(existingSnake);
+        }
+
+        return null;
+    }
+
 }
