@@ -27,13 +27,55 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails user = User
-                .withDefaultPasswordEncoder() // Not recommended for production, use BCrypt or another encoder
-                .username("user")
-                .password("password")
+        UserDetails renzo = User
+                .withDefaultPasswordEncoder()
+                .username("renzo")
+                .password("reyes")
                 .roles("USER")
                 .build();
 
-        return new InMemoryUserDetailsManager(user);
+        UserDetails james = User
+                .withDefaultPasswordEncoder()
+                .username("james")
+                .password("baquirin")
+                .roles("USER")
+                .build();
+
+        UserDetails justine = User
+                .withDefaultPasswordEncoder()
+                .username("justine")
+                .password("hernandez")
+                .roles("USER")
+                .build();
+
+        UserDetails omar = User
+                .withDefaultPasswordEncoder()
+                .username("oms")
+                .password("pogiko123")
+                .roles("USER")
+                .build();
+
+        UserDetails arwen = User
+                .withDefaultPasswordEncoder()
+                .username("wen")
+                .password("thankubeyonce")
+                .roles("USER")
+                .build();
+
+        UserDetails roman = User
+                .withDefaultPasswordEncoder()
+                .username("roman")
+                .password("albania")
+                .roles("USER")
+                .build();
+
+        UserDetails anthony = User
+                .withDefaultPasswordEncoder()
+                .username("anthony")
+                .password("chan")
+                .roles("USER")
+                .build();
+
+        return new InMemoryUserDetailsManager(renzo,james,justine,omar,arwen,roman,anthony);
     }
 }

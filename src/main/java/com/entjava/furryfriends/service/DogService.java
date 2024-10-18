@@ -15,12 +15,8 @@ public class DogService {
         return dogRepository.findAll();
     }
 
-    public Dog saveDog(Dog dog) {
-        return dogRepository.save(dog);
-    }
+    public Dog saveDog(Dog dog) {return dogRepository.save(dog);}
 
-    public void deleteDog(Long id) {
-        dogRepository.deleteById(id);
-    }
+    public void deleteDog(Long id) {dogRepository.deleteById(id);}
 }
 
