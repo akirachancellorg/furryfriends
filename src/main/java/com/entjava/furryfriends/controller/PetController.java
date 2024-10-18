@@ -5,6 +5,10 @@ import com.entjava.furryfriends.service.PetService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import com.entjava.furryfriends.model.ApiResponse;
+
 @RestController
 @RequestMapping("/pets")
 public class PetController {
@@ -16,13 +20,33 @@ public class PetController {
     }
 
     @GetMapping
-    public List<Pet> getAllPets() {
-        return petService.findAllPets();
+    public ApiResponse<List<Pet>> getAllPets() {
+        // Get the current authenticated user's username
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        // Fetch the list of pets
+        List<Pet> pets = petService.findAllPets();
+
+        // Create the response with data first, username second
+        ApiResponse<List<Pet>> response = new ApiResponse<>(pets, username);
+
+        return response; // Return the ApiResponse object
     }
 
     @GetMapping("/{id}")
-    public Pet getPetById(@PathVariable Long id) {
-        return petService.findPetById(id).orElseThrow(() -> new RuntimeException("Pet not found"));
+    public ApiResponse<Pet> getPetById(@PathVariable Long id) {
+        // Get the current authenticated user's username
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        // Fetch the pet
+        Pet pet = petService.findPetById(id).orElseThrow(() -> new RuntimeException("Pet not found"));
+
+        // Create the response
+        ApiResponse<Pet> response = new ApiResponse<>(pet, username);
+
+        return response; // Return the ApiResponse object
     }
 
     @PostMapping
@@ -35,4 +59,3 @@ public class PetController {
         petService.deletePet(id);
     }
 }
-

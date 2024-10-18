@@ -1,10 +1,12 @@
 package com.entjava.furryfriends.service;
 
 import com.entjava.furryfriends.model.Dog;
+import com.entjava.furryfriends.model.Goldfish;
 import com.entjava.furryfriends.repository.DogRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DogService {
@@ -21,6 +23,11 @@ public class DogService {
 
     public void deleteDog(Long id) {
         dogRepository.deleteById(id);
+    }
+
+    // Add this method to find a goldfish by ID
+    public Optional<Dog> findGoldfishById(Long id) {
+        return dogRepository.findById(id);
     }
 }
 
